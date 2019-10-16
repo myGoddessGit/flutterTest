@@ -2,10 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:event_bus/event_bus.dart';
 class GuideOneView extends StatefulWidget{
 
-  final Function sexSelectedBack;
-  GuideOneView({
-    this.sexSelectedBack,
-  });
   @override
   State<StatefulWidget> createState() {
     // TODO: implement createState
@@ -17,19 +13,11 @@ class GuideOneViewState extends State<GuideOneView>{
   ///1表示男 ， 2表示女，默认选择男
   static final EventBus eventBus = EventBus();
   //当前选择的性别
-   int sexSelect = 1;
+   int _sexSelect = 1;
 //  //男性
 //  static final int sexMan = 1;
 //  //女性
 //  static final int sexWoman = 2;
-  @override
-  void initState() {
-    // TODO: implement initState
-    super.initState();
-//    eventBus.on<GuideOneViewState>().listen((event){
-//      sexSelect = event.widget.sexSelectedBack(sexSelect);
-//    });
-  }
   @override
   Widget build(BuildContext context) {
     // TODO: implement build
@@ -209,23 +197,19 @@ class GuideOneViewState extends State<GuideOneView>{
                                 onTap: (){
                                   //选择男性时返回1并更新组件
                                   setState(() {
-                                    sexSelect = 1;
-                                    widget.sexSelectedBack(sexSelect);
+                                  return _sexSelect = 1;
                                   });
                                 },
                                 child: Row(
                                   children: <Widget>[
-                                    Image.asset(sexSelect == 1 ? 'assets/ico_true.png' : 'assets/ico_false.png' , width: 20, height: 20,)
+                                    Image.asset(_sexSelect == 1 ? 'assets/ico_true.png' : 'assets/ico_false.png' , width: 20, height: 20,),
+                                    SizedBox(width: 8,),
+                                    Image.asset(_sexSelect == 1 ? 'assets/ico_man.png' : 'assets/ico_man.png' , width: 20, height: 20,),
                                   ],
                                 ),
                               ),
                             ],
                           )
-                      ),
-                      Container(
-                        margin: EdgeInsets.only(left: 8),
-                        alignment: Alignment(-1.0, 0.0),
-                        child: Image.asset('assets/ico_man.png' , width: 20, height: 20,),
                       ),
                       Container(
                           margin: EdgeInsets.only(left: 43),
@@ -235,24 +219,21 @@ class GuideOneViewState extends State<GuideOneView>{
                               GestureDetector(
                                 onTap: (){
                                   setState(() {
-                                    sexSelect = 2;
-                                    widget.sexSelectedBack(sexSelect);
+                                  return _sexSelect = 2;
                                   });
-                                  //选择女性时返回2并更新组件
+                                  print("$_sexSelect");
                                 },
                                 child: Row(
                                   children: <Widget>[
-                                    Image.asset(sexSelect == 2 ? 'assets/ico_true.png' : 'assets/ico_false.png' , width: 20, height: 20,)
+                                    Image.asset(_sexSelect == 2 ? 'assets/ico_true.png' : 'assets/ico_false.png' , width: 20, height: 20,),
+                                    SizedBox(width: 8,),
+                                    Image.asset(_sexSelect == 2 ? 'assets/ico_woman.png' : 'assets/ico_woman.png', width: 20, height: 20,),
                                   ],
                                 ),
                               ),
+
                             ],
                           )
-                      ),
-                      Container(
-                        margin: EdgeInsets.only(left: 8),
-                        alignment: Alignment(-1.0, 0.0),
-                        child: Image.asset('assets/ico_woman.png' , width: 20, height: 20,),
                       ),
                     ],
                   ),

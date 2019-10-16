@@ -9,7 +9,6 @@ import 'package:flutter_app/guide/GuideOneView.dart';
 import 'package:flutter_app/guide/GuideTwoView.dart';
 import 'package:flutter_app/banner/GridViewMore.dart';
 import 'package:flutter_app/guide/GridViews.dart';
-import 'sex_select/SexSelected.dart';
 import 'package:flutter_app/news/FlutterNews.dart';
 import 'package:flutter_app/futureview/BeautifulView.dart';
 void main() => runApp(MyApp());
@@ -48,9 +47,6 @@ class MyApp extends StatelessWidget{
         },
         '/gridViews' : (BuildContext context){
           return PhotoViewPage();
-        },
-        '/sexViews' : (BuildContext context){
-          return SexSelected();
         },
         '/newsView' : (BuildContext context) {
           return FlutterNews();
@@ -117,12 +113,6 @@ class DemoHome extends StatelessWidget {
             child: Text('PageView'),
             onPressed: (){
               Navigator.of(context).pushNamed('/gridViews');
-            },
-          ),
-          RaisedButton(
-            child: Text('sexView'),
-            onPressed: (){
-              Navigator.of(context).pushNamed('/sexViews');
             },
           ),
           RaisedButton(
