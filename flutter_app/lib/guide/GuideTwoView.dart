@@ -18,7 +18,16 @@ class GuideTwoViewState extends State<GuideTwoView>{
              new Row(
                children: <Widget>[
                  new Container(
-                   margin: EdgeInsets.only(left: 23 , top: 45),
+                   margin: EdgeInsets.only(left: 8,top: 45),
+                   child: GestureDetector(
+                     onTap: () {
+                       Navigator.pop(context);
+                     },
+                     child: Image.asset('assets/ico_back_last_max.png',width: 22, height: 22,color: Colors.black87,),
+                   ),
+                  ),
+                 new Container(
+                   margin: EdgeInsets.only(left: 8 , top: 45),
                    child: Text("2 " , style: TextStyle(color: Color(0xFF363951) , fontSize: 22),),
                  ),
                  new Container(
@@ -26,7 +35,7 @@ class GuideTwoViewState extends State<GuideTwoView>{
                    child: Text("/ 2" , style: TextStyle(color: Color(0xFF363951) , fontSize: 18),),
                  ),
                  new Container(
-                   margin: EdgeInsets.only(left: 250 , top: 45),
+                   margin: EdgeInsets.only(left: 225 , top: 45),
                    child: Text("跳过" , style: TextStyle(color: Color(0xFF9596A4) , fontSize: 14),),
                  ),
                ],
@@ -36,13 +45,13 @@ class GuideTwoViewState extends State<GuideTwoView>{
                  new Container(
                    margin: EdgeInsets.only(top: 50),
                    alignment: Alignment(-1.0, 0),
-                   padding: EdgeInsets.only(left: 23),
+                   padding: EdgeInsets.only(left: 30),
                    child: Text("Hi 介绍一下自己吧!" , style: TextStyle(color: Color(0xFF363951) , fontSize: 22),),
                  ),
                  new Container(
                    margin: EdgeInsets.only(top: 5),
                    alignment: Alignment(-1.0, 0),
-                   padding: EdgeInsets.only(left: 23),
+                   padding: EdgeInsets.only(left: 30),
                    child: Text("学校信息能帮助Hr快速认知你" , style: TextStyle(color: Color(0xFFA4A5AD) , fontSize: 13),),
                  ),
                  new Container(
