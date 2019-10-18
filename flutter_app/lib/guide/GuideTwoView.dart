@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:flutter_app/utils/ChooseEd.dart';
+import 'package:flutter_app/utils/ChooseEdTime.dart';
 class GuideTwoView extends StatefulWidget{
   @override
   State<StatefulWidget> createState() {
@@ -7,7 +9,9 @@ class GuideTwoView extends StatefulWidget{
     return new GuideTwoViewState();
   }
 }
+
 class GuideTwoViewState extends State<GuideTwoView>{
+  int values;
   @override
   Widget build(BuildContext context) {
     // TODO: implement build
@@ -18,7 +22,7 @@ class GuideTwoViewState extends State<GuideTwoView>{
              new Row(
                children: <Widget>[
                  new Container(
-                   margin: EdgeInsets.only(left: 8,top: 45),
+                   margin: EdgeInsets.only(left: 8,top: 44),
                    child: GestureDetector(
                      onTap: () {
                        Navigator.pop(context);
@@ -133,7 +137,7 @@ class GuideTwoViewState extends State<GuideTwoView>{
                            alignment: Alignment(-1.0 , 0.0),
                            padding: EdgeInsets.only(left: 0),
                            height: 50,
-                           width: 220,
+                           width: 180,
                            child: TextField(
                              style : TextStyle(
                                color: Color(0xFF363951) , fontSize: 14,
@@ -146,7 +150,13 @@ class GuideTwoViewState extends State<GuideTwoView>{
                                ),
                              ),
                            ),
-                         )
+                         ),
+                         Container(
+                           margin: EdgeInsets.only(left: 0),
+                           alignment: Alignment(-1.0, 0.0),
+                           padding: EdgeInsets.only(left: 0),
+                           child: Image.asset('assets/ico_open_choose.png',width: 18,height: 18,),
+                         ),
                        ],
                      )
                  ),
@@ -181,8 +191,9 @@ class GuideTwoViewState extends State<GuideTwoView>{
                            alignment: Alignment(-1.0 , 0.0),
                            padding: EdgeInsets.only(left: 0),
                            height: 50,
-                           width: 220,
+                           width: 180,
                            child: TextField(
+                             enabled: false,
                              style : TextStyle(
                                color: Color(0xFF363951) , fontSize: 14,
                              ),
@@ -194,7 +205,52 @@ class GuideTwoViewState extends State<GuideTwoView>{
                                ),
                              ),
                            ),
-                         )
+                         ),
+                         Container(
+                           margin: EdgeInsets.only(left: 0),
+                           alignment: Alignment(-1.0, 0.0),
+                           padding: EdgeInsets.only(left: 0),
+                           child: GestureDetector(
+                             behavior: HitTestBehavior.opaque,
+                             onTap: () {
+                               showModalBottomSheet(
+                                   context: context,
+                                   builder: (BuildContext context) {
+                                     return Stack(
+                                       children: <Widget>[
+                                         Container(
+                                           height: 100.0,
+                                           width: double.infinity,
+                                           color: Colors.black54,
+                                         ),
+                                         Container(
+                                           decoration: BoxDecoration(
+                                             color: Colors.white,
+                                             borderRadius: BorderRadius.only(
+                                               topLeft: Radius.circular(25),
+                                               topRight: Radius.circular(25),
+                                             ),
+                                           ),
+                                         ),
+                                         Container(
+                                           child: ChooseEd(values),
+                                         ),
+                                       ],
+                                     );
+                                   }
+                               );
+                             },
+                             child: Container(
+                               margin: EdgeInsets.only(left: 0),
+                               alignment: Alignment(-1.0, 0.0),
+                               padding: EdgeInsets.only(left: 0),
+                               width: 40,
+                               height: 40,
+                               child: Image.asset('assets/ico_open_choose.png',width: 18,height: 18,),
+                             )
+                             //Image.asset('assets/ico_open_choose.png',width: 18,height: 18,),
+                           ),
+                         ),
                        ],
                      )
                  ),
@@ -229,8 +285,10 @@ class GuideTwoViewState extends State<GuideTwoView>{
                            alignment: Alignment(-1.0 , 0.0),
                            padding: EdgeInsets.only(left: 0),
                            height: 50,
-                           width: 220,
+                           width: 180,
                            child: TextField(
+                             enableInteractiveSelection: false,
+                             enabled: false,
                              style : TextStyle(
                                color: Color(0xFF363951) , fontSize: 14,
                              ),
@@ -242,7 +300,43 @@ class GuideTwoViewState extends State<GuideTwoView>{
                                ),
                              ),
                            ),
-                         )
+                         ),
+                         Container(
+                           margin: EdgeInsets.only(left: 0),
+                           alignment: Alignment(-1.0, 0.0),
+                           padding: EdgeInsets.only(left: 0),
+                           child: GestureDetector(
+                             onTap: () {
+                               showModalBottomSheet(
+                                   context: context,
+                                   builder: (BuildContext context) {
+                                     return Stack(
+                                       children: <Widget>[
+                                         Container(
+                                           height: 100.0,
+                                           width: double.infinity,
+                                           color: Colors.black54,
+                                         ),
+                                         Container(
+                                           decoration: BoxDecoration(
+                                             color: Colors.white,
+                                             borderRadius: BorderRadius.only(
+                                               topLeft: Radius.circular(25),
+                                               topRight: Radius.circular(25),
+                                             ),
+                                           ),
+                                         ),
+                                         Container(
+                                           child: ChooseEdTime(values),
+                                         ),
+                                       ],
+                                     );
+                                   }
+                               );
+                             },
+                             child: Image.asset('assets/ico_open_choose.png',width: 18,height: 18,),
+                           ),
+                         ),
                        ],
                      )
                  ),

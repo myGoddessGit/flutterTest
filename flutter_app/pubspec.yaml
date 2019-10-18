@@ -33,6 +33,7 @@ dependencies:
   event_bus: ^1.1.0
   flutter_webview_plugin: ^0.3.2
   shared_preferences: "^0.4.1"
+  fluttertoast: ^3.1.0
 dev_dependencies:
   flutter_test:
     sdk: flutter
@@ -61,6 +62,9 @@ flutter:
     - assets/ico_true.png
     - assets/config/channel.json
     - assets/ico_back_last_max.png
+    - assets/ico_edit_clear.png
+    - assets/ico_open_choose.png
+    - assets/ico_close.png
   # To add assets to your application, add an assets section, like this:
   # assets:
   #  - images/a_dot_burr.jpeg

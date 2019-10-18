@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:event_bus/event_bus.dart';
+import 'package:fluttertoast/fluttertoast.dart';
+import 'package:flutter_app/utils/CheckUtil.dart';
 class GuideOneView extends StatefulWidget{
 
   @override
@@ -14,10 +16,18 @@ class GuideOneViewState extends State<GuideOneView>{
   static final EventBus eventBus = EventBus();
   //当前选择的性别
    int _sexSelect = 1;
-//  //男性
-//  static final int sexMan = 1;
-//  //女性
-//  static final int sexWoman = 2;
+   TextEditingController _name = TextEditingController();
+   TextEditingController _mail = TextEditingController();
+   String values_name = "";
+   String values_mail = "";
+   @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+//    this._name.text = "abcdedg";
+//    this._mail.text = "123456";
+  }
+
   @override
   Widget build(BuildContext context) {
     // TODO: implement build
@@ -25,8 +35,9 @@ class GuideOneViewState extends State<GuideOneView>{
       body: SingleChildScrollView(
         child: Column(
           children: <Widget>[
-            new Row(
+             new Row(
               children: <Widget>[
+
                 new Container(
                   margin: EdgeInsets.only(left: 23 , top: 45),
                   child: Text("1 " , style: TextStyle(color: Color(0xFF363951) , fontSize: 22),),
@@ -97,7 +108,7 @@ class GuideOneViewState extends State<GuideOneView>{
                         alignment: Alignment(-1.0 , 0.0),
                         padding: EdgeInsets.only(left: 0),
                         height: 50,
-                        width: 250,
+                        width: 200,
                         child: TextField(
                           style : TextStyle(
                             color: Color(0xFF363951) , fontSize: 14,
@@ -109,8 +120,31 @@ class GuideOneViewState extends State<GuideOneView>{
                               color: Color(0xFFC2C4CC) , fontSize: 14,
                             ),
                           ),
+                          controller: this._name,
+                          onChanged: (value) {
+                            this.setState((){
+                              values_name = value;
+                            });
+                          },
                         ),
-                      )
+                      ),
+                      Container(
+                        margin: EdgeInsets.only(left: 15),
+                        alignment: Alignment(-1.0, 0.0),
+                        padding: EdgeInsets.only(left: 0),
+                        child: GestureDetector(
+                          onTap: () {
+                             this._name.text ="";
+                             setState(() {
+                               values_name = "";
+                             });
+                          },
+                          child: Offstage(
+                            offstage: (this._name.text).isEmpty,
+                            child: Image.asset('assets/ico_edit_clear.png',width: 20, height: 20,),
+                          ),
+                        )
+                      ),
                     ],
                   ),
                 ),
@@ -145,7 +179,7 @@ class GuideOneViewState extends State<GuideOneView>{
                         alignment: Alignment(-1.0 , 0.0),
                         padding: EdgeInsets.only(left: 0),
                         height: 50,
-                        width: 250,
+                        width: 200,
                         child: TextField(
                           style : TextStyle(
                             color: Color(0xFF363951) , fontSize: 14,
@@ -157,8 +191,31 @@ class GuideOneViewState extends State<GuideOneView>{
                               color: Color(0xFFC2C4CC) , fontSize: 14,
                             ),
                           ),
+                          controller: this._mail,
+                          onChanged: (value) {
+                            setState(() {
+                              values_mail = value;
+                            });
+                          }
                         ),
-                      )
+                      ),
+                      Container(
+                          margin: EdgeInsets.only(left: 15),
+                          alignment: Alignment(-1.0, 0.0),
+                          padding: EdgeInsets.only(left: 0),
+                          child: GestureDetector(
+                            onTap: () {
+                               this._mail.text ="";
+                               setState(() {
+                                 values_mail = "";
+                               });
+                            },
+                            child: Offstage(
+                              offstage: values_mail.isEmpty,
+                              child: Image.asset('assets/ico_edit_clear.png',width: 20, height: 20,),
+                            ),
+                          )
+                      ),
                     ],
                   ),
                 ),
@@ -251,7 +308,8 @@ class GuideOneViewState extends State<GuideOneView>{
                               borderRadius: BorderRadius.all(Radius.circular(24.0)),
                             ),
                             child: Text('下一步' , style: TextStyle(color: Colors.white , fontSize: 16),),
-                            onPressed: () { Navigator.of(context).pushNamed('/guideViewTwo');},
+                            onPressed: checkInputTwo() == false  ?  null : _checkInputOne,
+                            disabledColor: Color(0xFFF1F1F1),
                           ),
                         ),
                       )
@@ -264,6 +322,44 @@ class GuideOneViewState extends State<GuideOneView>{
         ),
       ),
     );
+  }
+  void _checkInputOne(){
+//    if ((this._name.text).isEmpty) {
+//      Fluttertoast.showToast(
+//        msg: "姓名不能为空", toastLength: Toast.LENGTH_SHORT, gravity: ToastGravity.CENTER, timeInSecForIos: 1, textColor: Colors.black87,
+//      );
+//      print('${this._name.text}');
+//      return;
+//    } else
+
+      if (!CheckUtils.checkName(this._name.text)) {
+      Fluttertoast.showToast(
+        msg: "姓名格式不正确", toastLength: Toast.LENGTH_SHORT, gravity: ToastGravity.CENTER, timeInSecForIos: 1, textColor: Colors.black87,
+      );
+      return;
+      }
+//      else if((this._mail.text).isEmpty) {
+//      Fluttertoast.showToast(
+//        msg: "邮箱不能为空", toastLength: Toast.LENGTH_SHORT, gravity: ToastGravity.CENTER, timeInSecForIos: 1, textColor: Colors.black87,
+//      );
+//      return;
+//     }
+      else if(!CheckUtils.checkMail(this._mail.text)) {
+      Fluttertoast.showToast(
+        msg: "邮箱格式不正确", toastLength: Toast.LENGTH_SHORT, gravity: ToastGravity.CENTER, timeInSecForIos: 1, textColor: Colors.black87,
+      );
+      return;
+    } else {
+      Navigator.of(context).pushNamed('/guideViewTwo');
+    }
+    print('${this._name.text}-${this._mail.text}');
+  }
+  bool checkInputTwo() {
+      if ((this._name.text).isNotEmpty && (this._mail.text).isNotEmpty) {
+        return true;
+      } else {
+        return false;
+      }
   }
 }
 
