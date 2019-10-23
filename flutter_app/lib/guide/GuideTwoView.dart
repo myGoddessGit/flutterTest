@@ -3,6 +3,7 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:flutter_app/utils/ChooseEd.dart';
 import 'package:flutter_app/utils/ChooseEdTime.dart';
 class GuideTwoView extends StatefulWidget{
+
   @override
   State<StatefulWidget> createState() {
     // TODO: implement createState
@@ -11,9 +12,19 @@ class GuideTwoView extends StatefulWidget{
 }
 
 class GuideTwoViewState extends State<GuideTwoView>{
-  int values;
+
+  String values ;
+  TextEditingController _time = TextEditingController();
+  TextEditingController _education = TextEditingController();
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+
+  }
   @override
   Widget build(BuildContext context) {
+
     // TODO: implement build
     return Scaffold(
        body: SingleChildScrollView(
@@ -39,8 +50,19 @@ class GuideTwoViewState extends State<GuideTwoView>{
                    child: Text("/ 2" , style: TextStyle(color: Color(0xFF363951) , fontSize: 18),),
                  ),
                  new Container(
-                   margin: EdgeInsets.only(left: 225 , top: 45),
-                   child: Text("跳过" , style: TextStyle(color: Color(0xFF9596A4) , fontSize: 14),),
+                     margin: EdgeInsets.only(left: 225 , top: 45),
+                     child: Row(
+                       children: <Widget>[
+                         GestureDetector(
+                           child: Text(
+                             '跳过', style: TextStyle(fontSize: 14, color: Color(0xFF9596A4)),
+                           ),
+                           onTap: (){
+                             Navigator.of(context).pushNamed('/timeView');
+                           },
+                         )
+                       ],
+                     )
                  ),
                ],
              ),
@@ -193,6 +215,7 @@ class GuideTwoViewState extends State<GuideTwoView>{
                            height: 50,
                            width: 180,
                            child: TextField(
+                             controller: this._education,
                              enabled: false,
                              style : TextStyle(
                                color: Color(0xFF363951) , fontSize: 14,
@@ -233,12 +256,14 @@ class GuideTwoViewState extends State<GuideTwoView>{
                                            ),
                                          ),
                                          Container(
-                                           child: ChooseEd(values),
+                                           child: ChooseEd(),
                                          ),
                                        ],
                                      );
                                    }
-                               );
+                               ).then((value){
+                                 this._education.text = value;
+                               });
                              },
                              child: Container(
                                margin: EdgeInsets.only(left: 0),
@@ -287,7 +312,8 @@ class GuideTwoViewState extends State<GuideTwoView>{
                            height: 50,
                            width: 180,
                            child: TextField(
-                             enableInteractiveSelection: false,
+                             controller: this._time,
+                             //enableInteractiveSelection: false,
                              enabled: false,
                              style : TextStyle(
                                color: Color(0xFF363951) , fontSize: 14,
@@ -299,6 +325,9 @@ class GuideTwoViewState extends State<GuideTwoView>{
                                  color: Color(0xFFC2C4CC) , fontSize: 14,
                                ),
                              ),
+                             onChanged: (value) {
+
+                             },
                            ),
                          ),
                          Container(
@@ -327,12 +356,14 @@ class GuideTwoViewState extends State<GuideTwoView>{
                                            ),
                                          ),
                                          Container(
-                                           child: ChooseEdTime(values),
+                                           child: ChooseEdTime(),
                                          ),
                                        ],
                                      );
                                    }
-                               );
+                               ).then((value){
+                                 this._time.text = value;
+                               });
                              },
                              child: Image.asset('assets/ico_open_choose.png',width: 18,height: 18,),
                            ),
@@ -353,7 +384,9 @@ class GuideTwoViewState extends State<GuideTwoView>{
                                borderRadius: BorderRadius.all(Radius.circular(24.0)),
                              ),
                              child: Text('完成' , style: TextStyle(color: Colors.white , fontSize: 16),),
-                             onPressed: () {},
+                             onPressed: () {
+                               //print(values);
+                             },
                            ),
                          ),
                        )

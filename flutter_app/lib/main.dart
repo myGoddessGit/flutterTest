@@ -11,6 +11,8 @@ import 'package:flutter_app/banner/GridViewMore.dart';
 import 'package:flutter_app/guide/GridViews.dart';
 import 'package:flutter_app/news/FlutterNews.dart';
 import 'package:flutter_app/futureview/BeautifulView.dart';
+import 'package:flutter_app/gridview/GridView.dart';
+import 'package:flutter_app/ui/demo_time.dart';
 void main() => runApp(MyApp());
 
 class MyApp extends StatelessWidget{
@@ -53,6 +55,12 @@ class MyApp extends StatelessWidget{
         },
         '/likeView' : (BuildContext context) {
           return BeautifulView();
+        },
+        '/gridViewss' : (BuildContext context) {
+          return GridDemo();
+        },
+        '/timeView' : (BuildContext context) {
+          return TimeDemo();
         }
       },
     );
@@ -126,7 +134,13 @@ class DemoHome extends StatelessWidget {
             onPressed: () {
               Navigator.of(context).pushNamed('/likeView');
             },
-          )
+          ),
+          RaisedButton(
+            child: Text('GridViewsDemo'),
+            onPressed: () {
+              Navigator.of(context).pushNamed('/gridViewss');
+            },
+          ),
         ],
       ),
     );

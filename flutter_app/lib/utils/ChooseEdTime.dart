@@ -1,23 +1,24 @@
 import 'package:flutter/material.dart';
-import 'package:shared_preferences/shared_preferences.dart';
+
 
 class ChooseEdTime extends StatefulWidget {
-  int values;
+  //int values;
   State<StatefulWidget> createState() => ChooseEdTimeState();
-  ChooseEdTime(int value){
-    this.values = value;
-  }
+//  ChooseEdTime(int value){
+//    this.values = value;
+//  }
 }
 
 class ChooseEdTimeState extends State<ChooseEdTime> {
-  int values = 0;
+  String values = "2020年";
   String desOne = "毕业时间选择";
   String desTwo = "请选择您的毕业时间";
-
+  List<String> time = ["2016年", "2017年", "2018年", "2019年", "2020年", "2021年", "2022年","2023年", "2024年", "2025年"];
   @override
   void initState() {
     // TODO: implement initState
     super.initState();
+
   }
   @override
   Widget build(BuildContext context) {
@@ -62,9 +63,10 @@ class ChooseEdTimeState extends State<ChooseEdTime> {
                 GestureDetector(
                   onTap: () {
                     setState(() {
-                      values = 1;
+                      values = time[0];
                     });
-                    Navigator.pop(context);
+                    Navigator.of(context).pop(values);
+                    //print(values);
                   },
                   behavior: HitTestBehavior.opaque,
                   child: Container(
@@ -73,11 +75,11 @@ class ChooseEdTimeState extends State<ChooseEdTime> {
                     width: 200,
                     child: Row(
                       children: <Widget>[
-                        Image.asset(values == 1 ? 'assets/ico_true.png' : "assets/ico_false.png",width: 18, height: 18,),
+                        Image.asset(values == time[0]? 'assets/ico_true.png' : "assets/ico_false.png",width: 18, height: 18,),
                         Container(
                           margin: EdgeInsets.only(left: 12),
                           alignment: Alignment(-1.0, 0.0),
-                          child: Text('2016', style: TextStyle(fontSize: 15, color: values == 1 ? Color(0xFF3388FF) : Color(0xFF363951) ),),
+                          child: Text(time[0], style: TextStyle(fontSize: 15, color: values == time[0] ? Color(0xFF3388FF) : Color(0xFF363951) ),),
                         ),
                       ],
                     ),
@@ -87,9 +89,9 @@ class ChooseEdTimeState extends State<ChooseEdTime> {
                 GestureDetector(
                   onTap: () {
                     setState(() {
-                      values = 2;
+                      values = time[1];
                     });
-                    Navigator.pop(context);
+                    Navigator.of(context).pop(values);
                   },
                   behavior: HitTestBehavior.opaque,
                   child: Container(
@@ -98,11 +100,11 @@ class ChooseEdTimeState extends State<ChooseEdTime> {
                     width: 200,
                     child: Row(
                       children: <Widget>[
-                        Image.asset(values == 2 ? 'assets/ico_true.png' : "assets/ico_false.png",width: 18, height: 18,),
+                        Image.asset(values == time[1] ? 'assets/ico_true.png' : "assets/ico_false.png",width: 18, height: 18,),
                         Container(
                           margin: EdgeInsets.only(left: 12),
                           alignment: Alignment(-1.0, 0.0),
-                          child: Text('2017', style: TextStyle(fontSize: 15, color:values == 2 ? Color(0xFF3388FF) : Color(0xFF363951) ),),
+                          child: Text(time[1], style: TextStyle(fontSize: 15, color:values == time[1] ? Color(0xFF3388FF) : Color(0xFF363951) ),),
                         ),
                       ],
                     ),
@@ -112,9 +114,9 @@ class ChooseEdTimeState extends State<ChooseEdTime> {
                 GestureDetector(
                   onTap: () {
                     setState(() {
-                      values = 3;
+                      values = time[2];
                     });
-                    Navigator.pop(context);
+                    Navigator.of(context).pop(values);
                   },
                   behavior: HitTestBehavior.opaque,
                   child: Container(
@@ -123,11 +125,11 @@ class ChooseEdTimeState extends State<ChooseEdTime> {
                     width: 200,
                     child: Row(
                       children: <Widget>[
-                        Image.asset(values == 3 ? 'assets/ico_true.png' : "assets/ico_false.png",width: 18, height: 18,),
+                        Image.asset(values == time[2]? 'assets/ico_true.png' : "assets/ico_false.png",width: 18, height: 18,),
                         Container(
                           margin: EdgeInsets.only(left: 12),
                           alignment: Alignment(-1.0, 0.0),
-                          child: Text('2018', style: TextStyle(fontSize: 15, color:values == 3 ? Color(0xFF3388FF) : Color(0xFF363951) ),),
+                          child: Text(time[2], style: TextStyle(fontSize: 15, color:values == time[2]? Color(0xFF3388FF) : Color(0xFF363951) ),),
                         ),
                       ],
                     ),
@@ -137,9 +139,9 @@ class ChooseEdTimeState extends State<ChooseEdTime> {
                 GestureDetector(
                   onTap: () {
                     setState(() {
-                      values = 4;
+                      values = time[3];
                     });
-                    Navigator.pop(context);
+                    Navigator.of(context).pop(values);
                   },
                   behavior: HitTestBehavior.opaque,
                   child: Container(
@@ -148,11 +150,11 @@ class ChooseEdTimeState extends State<ChooseEdTime> {
                     width: 200,
                     child: Row(
                       children: <Widget>[
-                        Image.asset(values == 4 ? 'assets/ico_true.png' : "assets/ico_false.png",width: 18, height: 18,),
+                        Image.asset(values == time[3] ? 'assets/ico_true.png' : "assets/ico_false.png",width: 18, height: 18,),
                         Container(
                           margin: EdgeInsets.only(left: 12),
                           alignment: Alignment(-1.0, 0.0),
-                          child: Text('2019', style: TextStyle(fontSize: 15, color:values == 4 ? Color(0xFF3388FF) : Color(0xFF363951) ),),
+                          child: Text(time[3], style: TextStyle(fontSize: 15, color:values == time[3] ? Color(0xFF3388FF) : Color(0xFF363951) ),),
                         ),
                       ],
                     ),
@@ -162,9 +164,9 @@ class ChooseEdTimeState extends State<ChooseEdTime> {
                 GestureDetector(
                   onTap: () {
                     setState(() {
-                      values = 5;
+                      values = time[4];
                     });
-                    Navigator.pop(context);
+                    Navigator.of(context).pop(values);
                   },
                   behavior: HitTestBehavior.opaque,
                   child: Container(
@@ -173,11 +175,11 @@ class ChooseEdTimeState extends State<ChooseEdTime> {
                     width: 200,
                     child: Row(
                       children: <Widget>[
-                        Image.asset(values == 5 ? 'assets/ico_true.png' : "assets/ico_false.png",width: 18, height: 18,),
+                        Image.asset(values == time[4]? 'assets/ico_true.png' : "assets/ico_false.png",width: 18, height: 18,),
                         Container(
                           margin: EdgeInsets.only(left: 12),
                           alignment: Alignment(-1.0, 0.0),
-                          child: Text('2020', style: TextStyle(fontSize: 15, color:values == 5 ? Color(0xFF3388FF) : Color(0xFF363951) ),),
+                          child: Text(time[4], style: TextStyle(fontSize: 15, color:values == time[4] ? Color(0xFF3388FF) : Color(0xFF363951) ),),
                         ),
                       ],
                     ),
@@ -187,9 +189,9 @@ class ChooseEdTimeState extends State<ChooseEdTime> {
                 GestureDetector(
                   onTap: () {
                     setState(() {
-                      values = 6;
+                      values = time[5];
                     });
-                    Navigator.pop(context);
+                    Navigator.of(context).pop(values);
                   },
                   behavior: HitTestBehavior.opaque,
                   child: Container(
@@ -198,11 +200,11 @@ class ChooseEdTimeState extends State<ChooseEdTime> {
                     width: 200,
                     child: Row(
                       children: <Widget>[
-                        Image.asset(values == 6 ? 'assets/ico_true.png' : "assets/ico_false.png",width: 18, height: 18,),
+                        Image.asset(values == time[5] ? 'assets/ico_true.png' : "assets/ico_false.png",width: 18, height: 18,),
                         Container(
                           margin: EdgeInsets.only(left: 12),
                           alignment: Alignment(-1.0, 0.0),
-                          child: Text('2021', style: TextStyle(fontSize: 15, color:values == 6 ? Color(0xFF3388FF) : Color(0xFF363951) ),),
+                          child: Text(time[5], style: TextStyle(fontSize: 15, color:values == time[5] ? Color(0xFF3388FF) : Color(0xFF363951) ),),
                         ),
                       ],
                     ),
@@ -212,9 +214,9 @@ class ChooseEdTimeState extends State<ChooseEdTime> {
                 GestureDetector(
                   onTap: () {
                     setState(() {
-                      values = 7;
+                      values = time[6];
                     });
-                    Navigator.pop(context);
+                    Navigator.of(context).pop(values);
                   },
                   behavior: HitTestBehavior.opaque,
                   child: Container(
@@ -223,11 +225,11 @@ class ChooseEdTimeState extends State<ChooseEdTime> {
                     width: 200,
                     child: Row(
                       children: <Widget>[
-                        Image.asset(values == 7 ? 'assets/ico_true.png' : "assets/ico_false.png",width: 18, height: 18,),
+                        Image.asset(values == time[6] ? 'assets/ico_true.png' : "assets/ico_false.png",width: 18, height: 18,),
                         Container(
                           margin: EdgeInsets.only(left: 12),
                           alignment: Alignment(-1.0, 0.0),
-                          child: Text('2022', style: TextStyle(fontSize: 15, color:values == 7 ? Color(0xFF3388FF) : Color(0xFF363951) ),),
+                          child: Text(time[6], style: TextStyle(fontSize: 15, color:values == time[6]? Color(0xFF3388FF) : Color(0xFF363951) ),),
                         ),
                       ],
                     ),
@@ -237,9 +239,9 @@ class ChooseEdTimeState extends State<ChooseEdTime> {
                 GestureDetector(
                   onTap: () {
                     setState(() {
-                      values = 8;
+                      values = time[7];
                     });
-                    Navigator.pop(context);
+                    Navigator.of(context).pop(values);
                   },
                   behavior: HitTestBehavior.opaque,
                   child: Container(
@@ -248,11 +250,11 @@ class ChooseEdTimeState extends State<ChooseEdTime> {
                     width: 200,
                     child: Row(
                       children: <Widget>[
-                        Image.asset(values == 8 ? 'assets/ico_true.png' : "assets/ico_false.png",width: 18, height: 18,),
+                        Image.asset(values == time[7]? 'assets/ico_true.png' : "assets/ico_false.png",width: 18, height: 18,),
                         Container(
                           margin: EdgeInsets.only(left: 12),
                           alignment: Alignment(-1.0, 0.0),
-                          child: Text('2023', style: TextStyle(fontSize: 15, color:values == 8 ? Color(0xFF3388FF) : Color(0xFF363951) ),),
+                          child: Text(time[7], style: TextStyle(fontSize: 15, color:values == time[7]? Color(0xFF3388FF) : Color(0xFF363951) ),),
                         ),
                       ],
                     ),
@@ -262,9 +264,9 @@ class ChooseEdTimeState extends State<ChooseEdTime> {
                 GestureDetector(
                   onTap: () {
                     setState(() {
-                      values = 9;
+                      values = time[8];
                     });
-                    Navigator.pop(context);
+                    Navigator.of(context).pop(values);
                   },
                   behavior: HitTestBehavior.opaque,
                   child: Container(
@@ -273,11 +275,11 @@ class ChooseEdTimeState extends State<ChooseEdTime> {
                     width: 200,
                     child: Row(
                       children: <Widget>[
-                        Image.asset(values == 9 ? 'assets/ico_true.png' : "assets/ico_false.png",width: 18, height: 18,),
+                        Image.asset(values == time[8] ? 'assets/ico_true.png' : "assets/ico_false.png",width: 18, height: 18,),
                         Container(
                           margin: EdgeInsets.only(left: 12),
                           alignment: Alignment(-1.0, 0.0),
-                          child: Text('2024', style: TextStyle(fontSize: 15, color:values == 9 ? Color(0xFF3388FF) : Color(0xFF363951) ),),
+                          child: Text(time[8], style: TextStyle(fontSize: 15, color:values == time[8] ? Color(0xFF3388FF) : Color(0xFF363951) ),),
                         ),
                       ],
                     ),
@@ -287,9 +289,9 @@ class ChooseEdTimeState extends State<ChooseEdTime> {
                 GestureDetector(
                   onTap: () {
                     setState(() {
-                      values = 10;
+                      values = time[9];
                     });
-                    Navigator.pop(context);
+                    Navigator.of(context).pop(values);
                   },
                   behavior: HitTestBehavior.opaque,
                   child: Container(
@@ -298,11 +300,11 @@ class ChooseEdTimeState extends State<ChooseEdTime> {
                     width: 200,
                     child: Row(
                       children: <Widget>[
-                        Image.asset(values == 10 ? 'assets/ico_true.png' : "assets/ico_false.png",width: 18, height: 18,),
+                        Image.asset(values == time[9]? 'assets/ico_true.png' : "assets/ico_false.png",width: 18, height: 18,),
                         Container(
                           margin: EdgeInsets.only(left: 12),
                           alignment: Alignment(-1.0, 0.0),
-                          child: Text('2025', style: TextStyle(fontSize: 15, color:values == 10 ? Color(0xFF3388FF) : Color(0xFF363951) ),),
+                          child: Text(time[9], style: TextStyle(fontSize: 15, color:values == time[9] ? Color(0xFF3388FF) : Color(0xFF363951) ),),
                         ),
                       ],
                     ),

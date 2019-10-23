@@ -26,7 +26,7 @@ List<ImageItem> data = List.generate(
       image: 'https://picsum.photos/id/${index+100}/200',
       ),
 );
-const userName = 'wyp2019';
+const userName = 'myGoddess';
 const userAvatar = 'https://avatars0.githubusercontent.com/u/20165584?s=40&v=4';
 const userProflie = 'study more , lucky more';
 const defaultTextStyle = TextStyle(color: Colors.white , letterSpacing: 2.0);
