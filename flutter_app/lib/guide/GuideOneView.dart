@@ -55,7 +55,7 @@ class GuideOneViewState extends State<GuideOneView>{
                           '跳过', style: TextStyle(fontSize: 14, color: Color(0xFF9596A4)),
                         ),
                         onTap: (){
-                          Navigator.of(context).pushNamed('/newsView');
+                          Navigator.of(context).pushNamed('/mineView');
                         },
                       )
                     ],
@@ -324,13 +324,6 @@ class GuideOneViewState extends State<GuideOneView>{
     );
   }
   void _checkInputOne(){
-//    if ((this._name.text).isEmpty) {
-//      Fluttertoast.showToast(
-//        msg: "姓名不能为空", toastLength: Toast.LENGTH_SHORT, gravity: ToastGravity.CENTER, timeInSecForIos: 1, textColor: Colors.black87,
-//      );
-//      print('${this._name.text}');
-//      return;
-//    } else
 
       if (!CheckUtils.checkName(this._name.text)) {
       Fluttertoast.showToast(
@@ -338,12 +331,6 @@ class GuideOneViewState extends State<GuideOneView>{
       );
       return;
       }
-//      else if((this._mail.text).isEmpty) {
-//      Fluttertoast.showToast(
-//        msg: "邮箱不能为空", toastLength: Toast.LENGTH_SHORT, gravity: ToastGravity.CENTER, timeInSecForIos: 1, textColor: Colors.black87,
-//      );
-//      return;
-//     }
       else if(!CheckUtils.checkMail(this._mail.text)) {
       Fluttertoast.showToast(
         msg: "邮箱格式不正确", toastLength: Toast.LENGTH_SHORT, gravity: ToastGravity.CENTER, timeInSecForIos: 1, textColor: Colors.black87,

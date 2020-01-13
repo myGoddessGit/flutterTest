@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:flutter_app/style/theme.dart' as theme;
-/**
- *登录界面
- */
+
+///登录界面
+
 class SignInPage extends StatefulWidget {
   @override
   _SignInPageState createState() => new _SignInPageState();

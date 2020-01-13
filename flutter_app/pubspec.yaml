@@ -35,6 +35,11 @@ dependencies:
   shared_preferences: "^0.4.1"
   fluttertoast: ^3.1.0
   cached_network_image: ^1.1.2
+  dio: ^2.2.0
+  connectivity: ^0.3.2
+  mysql1: ^0.17.0+1
+  azlistview: ^0.1.2
+  lpinyin: ^1.0.7
 dev_dependencies:
   flutter_test:
     sdk: flutter
@@ -66,6 +71,66 @@ flutter:
     - assets/ico_edit_clear.png
     - assets/ico_open_choose.png
     - assets/ico_close.png
+    - assets/icon_profile_arrow.png
+    - assets/home.png
+    - assets/home_selected.png
+    - assets/briefing_session_normal.png
+    - assets/briefing_session_selected.png
+    - assets/job_exp_normal.png
+    - assets/job_exp_selected.png
+    - assets/job_normal.png
+    - assets/job_pressed.png
+    - assets/myself_normal.png
+    - assets/myself_selected.png
+    - assets/icon_resume_card_watermark.png
+    - assets/icon_resume_edit_info.png
+    - assets/icon_profile_my_favorite.png
+    - assets/icon_profile_my_resume.png
+    - assets/icon_profile_resume_history.png
+    - assets/icon_profile_resume_invitation.png
+    - assets/icon_profile_setting.png
+    - assets/icon_top_bar_search.png
+    - assets/icon_top_bar_chat.png
+    - assets/icon_home_top.png
+    - assets/icon_home_menu_sxzp.png
+    - assets/icon_home_menu_xjh.png
+    - assets/icon_home_menu_xz.png
+    - assets/icon_home_menu_brand.png
+    - assets/icon_home_menu_zycp.png
+    - assets/icon_home_job_experience.png
+    - assets/icon_home_menu_bgt.png
+    - assets/icon_home_menu_bszt.png
+    - assets/icon_home_menu_job_exp.png
+    - assets/icon_home_menu_live.png
+    - assets/icon_home_menu_my_resume.png
+    - assets/icon_home_menu_super_resume.png
+    - assets/icon_xyzp_brand_computer.png
+    - assets/icon_xyzp_brand_education.png
+    - assets/icon_xyzp_brand_energy.png
+    - assets/icon_xyzp_brand_estate.png
+    - assets/icon_xyzp_brand_financial.png
+    - assets/icon_xyzp_brand_internet.png
+    - assets/icon_xyzp_brand_logistics.png
+    - assets/icon_xyzp_brand_manufacturing.png
+    - assets/icon_xyzp_brand_media.png
+    - assets/icon_xyzp_brand_medicine.png
+    - assets/icon_xyzp_brand_retail.png
+    - assets/icon_xyzp_brand_service.png
+    - assets/icon_xyzp_brand_state.png
+    - assets/ico_login_top.png
+    - assets/icon_enter_skip_ad.png
+    - assets/ico_login_code_blue.png
+    - assets/ico_login_phone_blue.png
+    - assets/ico_login_pwd_blue.png
+    - assets/ico_show_pass.png
+    - assets/icon_hide_pass.png
+    - assets/ico_logo_we_chat_new.png
+    - assets/config/province.json
+    - assets/bgLeftBottom.png
+    - assets/bgLeftTop.png
+    - assets/bgRightBottom.png
+    - assets/bgRightTop.png
+    - assets/config/
   # To add assets to your application, add an assets section, like this:
   # assets:
   #  - images/a_dot_burr.jpeg

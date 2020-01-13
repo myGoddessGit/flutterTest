@@ -51,7 +51,6 @@ class _PhotoViewPageState extends State<PhotoViewPage> {
                     padding: _edgeInsetsForIndex(index),
                     child: InkWell(
                       onTap: () {
-                        //debug:
                         print(assetNames[index]);
                         Navigator.of(context)
                             .push(MaterialPageRoute(builder: (context) {
@@ -159,7 +158,6 @@ class PhotoPreview extends StatefulWidget {
 
 class _PhotoPreviewState extends State<PhotoPreview> {
   int currentIndex;
-
   @override
   void initState() {
     currentIndex = widget.initialIndex;
@@ -174,19 +172,51 @@ class _PhotoPreviewState extends State<PhotoPreview> {
   @override
   Widget build(BuildContext context) {
     return Container(
-      child: PhotoViewGallery.builder(
-        scrollPhysics: const BouncingScrollPhysics(),
-        onPageChanged: onPageChanged,
-        itemCount: widget.photoList.length,
-        pageController: widget.pageController,
-        builder: (BuildContext context, int index) {
-          return PhotoViewGalleryPageOptions(
-            imageProvider: AssetImage(widget.photoList[index]),
-            minScale: PhotoViewComputedScale.contained * 0.6,
-            maxScale: PhotoViewComputedScale.covered * 1.1,
-            initialScale: PhotoViewComputedScale.contained,
-          );
-        },
+      width: 360,
+      height: 720,
+      color: Colors.white,
+      child: Column(
+        children: <Widget>[
+          Row(
+            children: <Widget>[
+              Container(
+                height: 100,
+                alignment: Alignment.centerLeft,
+                margin: EdgeInsets.only(left: 12),
+                child: GestureDetector(
+                  onTap: (){
+                    Navigator.of(context).pop();
+                  },
+                  child: Icon(Icons.arrow_back),
+                ),
+              ),
+              Container(
+                height: 100,
+                alignment: Alignment.centerLeft,
+                margin: EdgeInsets.only(left: 20),
+                child: Text("${currentIndex + 1} / ${widget.photoList.length}",style: TextStyle(color: Colors.black45, fontSize: 18, decoration: TextDecoration.none),),
+              ),
+            ],
+          ),
+          Container(
+            width: 360,
+            height: 450,
+            child: PhotoViewGallery.builder(
+            scrollPhysics: const BouncingScrollPhysics(),
+            onPageChanged: onPageChanged,
+            itemCount: widget.photoList.length,
+            pageController: widget.pageController,
+            builder: (BuildContext context, int index) {
+            return PhotoViewGalleryPageOptions(
+              imageProvider: AssetImage(widget.photoList[index]),
+              minScale: PhotoViewComputedScale.contained * 0.6,
+              maxScale: PhotoViewComputedScale.covered * 1.1,
+              initialScale: PhotoViewComputedScale.contained,
+            );
+            },
+            ),
+            ),
+        ],
       ),
     );
   }

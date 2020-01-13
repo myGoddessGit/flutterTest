@@ -13,6 +13,18 @@ import 'package:flutter_app/news/FlutterNews.dart';
 import 'package:flutter_app/futureview/BeautifulView.dart';
 import 'package:flutter_app/gridview/GridView.dart';
 import 'package:flutter_app/ui/demo_time.dart';
+import 'package:flutter_app/honglongdetails/SmallCard.dart';
+import 'package:flutter_app/honglong/MainPage.dart';
+import 'package:flutter_app/honglongdetails/PesonalNumber.dart';
+import 'package:flutter_app/honglongdetails/UpdateNumber.dart';
+import 'package:flutter_app/honglongdetails/SettingView.dart';
+import 'honglong/JLQView.dart';
+import 'package:flutter_app/honglongview/LoginView.dart';
+import 'honglongview/FindPassView.dart';
+import 'guide/TestView.dart';
+import 'citypick/CityPicker.dart';
+import 'longpress/LongPress.dart';
+import 'daily_utils/oclock.dart';
 void main() => runApp(MyApp());
 
 class MyApp extends StatelessWidget{
@@ -26,12 +38,12 @@ class MyApp extends StatelessWidget{
         '/imagePicker' : (BuildContext context){
           return  ImagePickerWidget();
         },
-        '/wypView' : (BuildContext context){
+        '/winView' : (BuildContext context){
           return  MyHomePage();
         },
-        '/loginView' : (BuildContext context){
-          return  UserContainer(user: null, child: new HomePage());
-        },
+//        '/loginView' : (BuildContext context){
+//          return  UserContainer(user: null, child: new HomePage());
+//        },
         '/historyView' : (BuildContext context){
           return  HomePageTwo();
         },
@@ -61,6 +73,42 @@ class MyApp extends StatelessWidget{
         },
         '/timeView' : (BuildContext context) {
           return TimeDemo();
+        },
+        '/cardView' : (BuildContext context) {
+          return SmallCard();
+        },
+        '/mineView' : (BuildContext context) {
+          return MainPage();
+        },
+        '/numberView' : (BuildContext context) {
+          return PersonalNumber();
+        },
+        '/updateView' : (BuildContext context) {
+          return UpdateNumber();
+        },
+        '/settingView': (BuildContext context) {
+          return SettingView();
+        },
+        '/JLQView' : (BuildContext context) {
+          return JLQView();
+        },
+        '/HLlongin' : (BuildContext context) {
+          return LoginView();
+        },
+        '/Findpass' : (BuildContext context) {
+          return FindPassView();
+        },
+        '/testview' : (BuildContext context) {
+          return TestView();
+        },
+        '/citypick' : (BuildContext context) {
+          return CityPage();
+        },
+        '/longpress' : (BuildContext context) {
+          return LongPressDemo(title: "点击位置");
+        },
+        '/oclock' : (BuildContext context){
+          return Oclock();
         }
       },
     );
@@ -73,75 +121,95 @@ class DemoHome extends StatelessWidget {
       appBar: new AppBar(
         title: new Text("DemoHome"),
       ),
-      body: new Column(
-        children: <Widget>[
-          RaisedButton(
-            child: Text("ImagePicker"),
-            onPressed:(){
-              Navigator.of(context).pushNamed('/imagePicker');
-            },
-          ),
-          RaisedButton(
-            child: Text("MyHomePage"),
-            onPressed: (){
-              Navigator.of(context).pushNamed('/wypView');
-            }
-          ),
-          RaisedButton(
-            child: Text("LoginView"),
-            onPressed: (){
-              Navigator.of(context).pushNamed('/loginView');
-            },
-          ),
-          RaisedButton(
-            child: Text("HistoryView"),
-            onPressed: (){
-              Navigator.of(context).pushNamed('/historyView');
-            },
-          ),
-          RaisedButton(
-            child: Text('SwiperView'),
-            onPressed: (){
-              Navigator.of(context).pushNamed('/swiperView');
-            },
-          ),
-          RaisedButton(
-            child: Text('GuideView'),
-            onPressed: (){
-              Navigator.of(context).pushNamed('/guideView');
-            },
-          ),
-          RaisedButton(
-            child: Text('GridView'),
-            onPressed: (){
-              Navigator.of(context).pushNamed('/gridView');
-            },
-          ),
-          RaisedButton(
-            child: Text('PageView'),
-            onPressed: (){
-              Navigator.of(context).pushNamed('/gridViews');
-            },
-          ),
-          RaisedButton(
-            child: Text('FlutterNews'),
-            onPressed: () {
-              Navigator.of(context).pushNamed('/newsView');
-            },
-          ),
-          RaisedButton(
-            child: Text('FutureView'),
-            onPressed: () {
-              Navigator.of(context).pushNamed('/likeView');
-            },
-          ),
-          RaisedButton(
-            child: Text('GridViewsDemo'),
-            onPressed: () {
-              Navigator.of(context).pushNamed('/gridViewss');
-            },
-          ),
-        ],
+      body: new SingleChildScrollView(
+        child: Column(
+          children: <Widget>[
+            RaisedButton(
+                child: Text("MyHomePage"),
+                onPressed: (){
+                  Navigator.of(context).pushNamed('/winView');
+                }
+            ),
+            RaisedButton(
+              child: Text("HistoryView"),
+              onPressed: (){
+                Navigator.of(context).pushNamed('/historyView');
+              },
+            ),
+            RaisedButton(
+              child: Text('SwiperView'),
+              onPressed: (){
+                Navigator.of(context).pushNamed('/swiperView');
+              },
+            ),
+            RaisedButton(
+              child: Text('GuideView'),
+              onPressed: (){
+                Navigator.of(context).pushNamed('/guideView');
+              },
+            ),
+            RaisedButton(
+              child: Text('GridView'),
+              onPressed: (){
+                Navigator.of(context).pushNamed('/gridView');
+              },
+            ),
+            RaisedButton(
+              child: Text('PageView'),
+              onPressed: (){
+                Navigator.of(context).pushNamed('/gridViews');
+              },
+            ),
+            RaisedButton(
+              child: Text('FlutterNews'),
+              onPressed: () {
+                Navigator.of(context).pushNamed('/newsView');
+              },
+            ),
+            RaisedButton(
+              child: Text('FutureView'),
+              onPressed: () {
+                Navigator.of(context).pushNamed('/likeView');
+              },
+            ),
+            RaisedButton(
+              child: Text('GridViewsDemo'),
+              onPressed: () {
+                Navigator.of(context).pushNamed('/gridViewss');
+              },
+            ),
+            RaisedButton(
+              child: Text('HongLongView'),
+              onPressed: () {
+                Navigator.of(context).pushNamed('/mineView');
+              },
+            ),
+            RaisedButton(
+              child: Text('LoginView'),
+              onPressed: () {
+                Navigator.of(context).pushNamed('/HLlongin');
+              },
+            ),
+            RaisedButton(
+              child: Text('CityPick'),
+              onPressed: (){
+                Navigator.of(context).pushNamed('/citypick');
+              },
+            ),
+            RaisedButton(
+              child: Text('LongPress'),
+              onPressed: (){
+                Navigator.of(context).pushNamed('/longpress');
+              },
+            ),
+            RaisedButton(
+              child: Text('ClockNow'),
+              onPressed: (){
+                Navigator.of(context).pushNamed('/oclock');
+              },
+            )
+          ],
+        ),
       ),
     );
   }

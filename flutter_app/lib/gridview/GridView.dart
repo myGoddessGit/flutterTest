@@ -160,6 +160,7 @@ class GridViewBuilderDemo extends StatelessWidget {
     return Padding(
       padding: const EdgeInsets.all(10),
       child: GridView.builder(
+        scrollDirection: Axis.horizontal,
         gridDelegate:
             SliverGridDelegateWithFixedCrossAxisCount(
               crossAxisCount: 3
