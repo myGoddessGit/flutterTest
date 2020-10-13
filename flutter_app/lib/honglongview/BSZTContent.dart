@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_app/honglongutils/AllUtils.dart';
 import 'package:flutter_app/honglongapi/BSZTData.dart';
-import 'package:flutter_app/honglongapi/HongLongApi.dart';
 import 'package:cached_network_image/cached_network_image.dart';
+import 'package:flutter_app/honglongutils/HttpUtil.dart';
+import 'dart:convert';
 class BSZTContent extends StatefulWidget {
   @override
   State<StatefulWidget> createState() {
@@ -19,8 +20,11 @@ class BSZTContentState extends State<BSZTContent> {
     _pullData();
   }
   void _pullData() async {
-    await HongLongApi.getBSZT().then((BSZTData list){
-      data.addAll(list.info);
+    var response = await HttpUtil().get("bszt/list");
+    Map info = json.decode(response.toString());
+    var a = BSZTData.fromJson(info);
+    setState(() {
+      data.addAll(a.info);
     });
   }
   @override

@@ -2,9 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:flutter_app/utils/ChooseEd.dart';
 import 'package:flutter_app/utils/ChooseEdTime.dart';
 import 'package:flutter_app/honglongapi/CityData.dart';
-import 'package:flutter_app/honglongapi/HongLongApi.dart';
 import 'package:flutter_app/utils/SharePreferenceUtil.dart';
 import 'package:flutter_app/utils/ChooseMajor.dart';
+import 'package:flutter_app/honglongutils/HttpUtil.dart';
+import 'dart:convert';
 class GuideTwoView extends StatefulWidget{
 
   @override
@@ -36,8 +37,11 @@ class GuideTwoViewState extends State<GuideTwoView>{
     getCountS();
   }
   void _pullData() async {
-    await HongLongApi.getCollege().then((CityData list){
-      data.addAll(list.college.college);
+    var response = await HttpUtil().get("common/const?type=college");
+    Map info = json.decode(response.toString());
+    var a = CityData.fromJson(info);
+    setState(() {
+      data.addAll(a.college.college);
     });
   }
   void _init(value) {

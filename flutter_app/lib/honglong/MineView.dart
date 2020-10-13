@@ -1,12 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_app/honglongapi/HongLongApi.dart';
-import 'package:flutter_app/honglongapi/Brandbean.dart';
-import 'package:flutter_app/honglongapi/HotXJHbean.dart';
-import 'package:flutter_app/honglongapi/HotXZbean.dart';
 import 'package:flutter_app/honglongutils/AllUtils.dart';
-import 'package:flutter_app/honglongapi/ResumeMBbean.dart';
-//import 'package:flutter_app/honglongapi/BSZTbean.dart';
-import 'package:flutter_app/honglongapi/BSZTData.dart';
 import 'package:flutter_app/honglongapi/CityData.dart';
 class MineView extends StatefulWidget {
   @override
@@ -15,10 +8,6 @@ class MineView extends StatefulWidget {
     return MineViewState();
   }
 }
-//class BrandItem extends StatelessWidget {
-//  BrandBean info;
-//  BrandItem({Key key, this.info}) : super(key: key);
-//}
 class MineViewState extends State<MineView> {
   //List<BSZTInfo> data = List();
   List<CollegeCollege> data = List();

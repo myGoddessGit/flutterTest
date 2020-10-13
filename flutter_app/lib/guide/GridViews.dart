@@ -141,6 +141,10 @@ class HeroHeader implements SliverPersistentHeaderDelegate {
 
   @override
   FloatingHeaderSnapConfiguration get snapConfiguration => null;
+
+  @override
+  // TODO: implement stretchConfiguration
+  OverScrollHeaderStretchConfiguration get stretchConfiguration => null;
 }
 
 //PhotoPreview 点击小图后的效果

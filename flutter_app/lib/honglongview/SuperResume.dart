@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_app/honglongutils/AllUtils.dart';
 import 'package:flutter_app/honglongapi/ResumeMBbean.dart';
-import 'package:flutter_app/honglongapi/HongLongApi.dart';
 import 'package:cached_network_image/cached_network_image.dart';
+import 'package:flutter_app/honglongutils/HttpUtil.dart';
+import 'dart:convert';
 class SuperResume extends StatefulWidget {
   @override
   State<StatefulWidget> createState() {
@@ -19,8 +20,11 @@ class SuperResumeState extends State<SuperResume> {
     _pullData();
   }
   void _pullData() async {
-    await HongLongApi.getResumeMB().then((ResumeMBInfo list){
-      data.addAll(list.data);
+    var response = await HttpUtil().get("resume/template");
+    Map info = json.decode(response.toString());
+    var a = ResumeMBInfo.fromJson(info);
+    setState(() {
+      data.addAll(a.data);
     });
   }
   @override

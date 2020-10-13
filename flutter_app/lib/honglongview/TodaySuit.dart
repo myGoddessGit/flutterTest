@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_app/honglongapi/HongLongApi.dart';
 import 'package:flutter_app/honglongapi/Brandbean.dart';
 import 'package:cached_network_image/cached_network_image.dart';
+import 'package:flutter_app/honglongutils/HttpUtil.dart';
+import 'dart:convert';
 
 class TodaySuit extends StatefulWidget {
   @override
@@ -19,8 +20,11 @@ class TodaySuitState extends State<TodaySuit> {
     _pullData();
   }
   void _pullData() async {
-    await HongLongApi.getBrand().then((BrandInfo list){
-        data.addAll(list.data);
+    var response = await HttpUtil().get("xyzp/brand-list");
+    Map info = json.decode(response.toString());
+    var dataes = BrandInfo.fromJson(info);
+    setState(() {
+      data.addAll(dataes.data);
     });
   }
   @override

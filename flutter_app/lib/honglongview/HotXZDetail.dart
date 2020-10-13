@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_app/honglongapi/HongLongApi.dart';
 import 'package:flutter_app/honglongapi/HotXZbean.dart';
 import 'package:cached_network_image/cached_network_image.dart';
+import 'package:flutter_app/honglongutils/HttpUtil.dart';
+import 'dart:convert';
 class HotXZDetail extends StatefulWidget {
   @override
   State<StatefulWidget> createState() {
@@ -19,8 +20,11 @@ class HotXZDetailState extends State<HotXZDetail> {
     _pullData();
   }
   void _pullData() async {
-    await HongLongApi.getHotXZ().then((HotXZInfo list){
-      data.addAll(list.data);
+    var response = await HttpUtil().get("xyzp/list");
+    Map info = json.decode(response.toString());
+    var a = HotXZInfo.fromJson(info);
+    setState(() {
+      data.addAll(a.data);
     });
   }
   @override

@@ -48,6 +48,11 @@ android {
             signingConfig signingConfigs.debug
         }
     }
+
+    compileOptions {
+        targetCompatibility JavaVersion.VERSION_1_8
+        sourceCompatibility JavaVersion.VERSION_1_8
+    }
 }
 
 flutter {
@@ -59,4 +64,5 @@ dependencies {
     androidTestImplementation 'androidx.test:runner:1.1.1'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.1.1'
     implementation files('libs/BaiduLBS_Android.jar')
+    implementation 'androidx.legacy:legacy-support-v4:1.0.0'
 }

@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_app/honglongapi/HongLongApi.dart';
 import 'package:flutter_app/honglongapi/HotXJHbean.dart';
 import 'package:cached_network_image/cached_network_image.dart';
+import 'package:flutter_app/honglongutils/HttpUtil.dart';
+import 'dart:convert';
 class HotXJHDetail extends StatefulWidget {
   @override
   State<StatefulWidget> createState() {
@@ -19,8 +20,11 @@ class HotXJHDetailState extends State<HotXJHDetail> {
     _pullData();
   }
   void _pullData() async {
-    await HongLongApi.getHotXJH().then((HotXJHInfo list){
-      data.addAll(list.data);
+    var response = await HttpUtil().get("xjh/list");
+    Map info = json.decode(response.toString());
+    var a =  HotXJHInfo.fromJson(info);
+    setState(() {
+      data.addAll(a.data);
     });
   }
   @override
@@ -47,6 +51,7 @@ class HotXJHDetailState extends State<HotXJHDetail> {
         ),
       );
   }
+ // ignore: non_constant_identifier_names
  _ImageUrls(index, context) {
     var datas = data[index];
     return Container(
@@ -89,7 +94,7 @@ class HotXJHDetailState extends State<HotXJHDetail> {
                             alignment: Alignment(-1.0, 0.0),
                             margin: EdgeInsets.only(left: 15),
                             width: 200,
-                            child: Text(datas.holdtime.substring(5,10) + " "+ datas.holdtime.substring(11,16) + " " + datas.universityShortName,style: TextStyle(fontSize: 12,color: Color(0xff8E8E93)),),
+                            child: Text(datas.holdtime.substring(5,10) + " "+ datas.holdtime.substring(11,16) + " " + (datas.universityShortName?? ""),style: TextStyle(fontSize: 12,color: Color(0xff8E8E93)),),
                           ),
                         ],
                       ),

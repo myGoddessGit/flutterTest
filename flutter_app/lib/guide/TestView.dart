@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_app/honglongapi/CityData.dart';
-import 'package:flutter_app/honglongapi/HongLongApi.dart';
 class TestView extends StatefulWidget {
   @override
   State<StatefulWidget> createState() {
@@ -22,9 +21,7 @@ class TestViewState extends State<TestView>{
 //    _init(val);
   }
   void _pullData() async {
-    await HongLongApi.getCollege().then((CityData list){
-      data.addAll(list.college.college);
-    });
+
   }
   void _init(value) {
     val = value;
